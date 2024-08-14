@@ -1,0 +1,54 @@
+{
+    "@context": {
+        "xsd": "https://www.w3.org/2001/XMLSchema#",
+        "gs1": "https://gs1.org/voc/",
+        "gs1:latitude": {
+            "@type": "xsd:float"
+        },
+        "gs1:longitude": {
+            "@type": "xsd:float"
+        },
+        "gs1:geo": {
+            "@type": "gs1:GeoCoordinates"
+        },
+        "gs1:address": {
+            "@type": "gs1:PostalAddress"
+        },
+        "gs1:countryCode": {
+            "@type": "gs1:Country"
+        }
+    },
+    "@type": "gs1:Place",
+    "@id": "https://id.gs1.org/414/4012345000122",
+    "gs1:physicalLocationName": [
+        {
+            "@value": "Example Location One",
+            "@language": "en"
+        }
+    ],
+    "gs1:locationGLN": "4012345000122",
+    "gs1:address": [
+        {
+            "gs1:streetAddress": [
+                {
+                    "@value": "Sample Street 123",
+                    "@language": "en"
+                }
+            ],
+            "gs1:addressLocality": [
+                {
+                    "@value": "Sample City",
+                    "@language": "en"
+                }
+            ],
+            "gs1:postalCode": "12345",
+            "gs1:addressCountry": {
+                "gs1:countryCode": "DE"
+            }
+        }
+    ],
+    "gs1:geo": {
+        "gs1:latitude": "50.942499",
+        "gs1:longitude": "6.898247"
+    }
+}
