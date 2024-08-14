@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,9 +17,6 @@
                 },
                 "gs1:longitude": {
                     "@type": "xsd:float"
-                },
-                "gs1:geo": {
-                    "@type": "gs1:GeoCoordinates"
                 },
                 "gs1:address": {
                     "@type": "gs1:PostalAddress"
@@ -58,11 +56,17 @@
             ],
             "gs1:geo": {
                 "gs1:latitude": "50.942499",
-                "gs1:longitude": "6.898247"
-            }
+                "gs1:longitude": "6.898247",
+                "@type": "gs1:GeoCoordinates"
+            },
+             {
+                "gs1:polygon": "6.898247,50.942499 6.898292,50.942275 6.898094,50.942263 6.898126,50.942106 6.898526,50.942130 6.898451,50.942512 6.898247,50.942499",
+                "@type": "gs1:GeoShape"
+            }   
         }
     </script>
 </head>
+
 <body>
     <header>
         <h1>Location Information</h1>
@@ -78,4 +82,5 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
