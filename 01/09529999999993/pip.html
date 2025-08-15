@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Camille Standard One</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header,
+        footer {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .form-section {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-container {
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .warning {
+            color: red;
+            white-space: pre-line;
+            margin-top: 20px;
+        }
+
+        .spinner {
+            display: none;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .glitch {
+            animation: glitch 0.3s linear 2;
+        }
+
+        .product-section img {
+            max-width: 40%;
+            height: auto;
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+            }
+
+            25% {
+                transform: translate(-5px, 5px);
+            }
+
+            50% {
+                transform: translate(5px, -5px);
+            }
+
+            75% {
+                transform: translate(-5px, -5px);
+            }
+
+            100% {
+                transform: translate(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>Camille Standard One</h2>
+    </header>
+
+    <div class="product-section">
+        <h4>Product Description</h4>
+        <p>This luxurious hand soap brings joy to your daily routine. <br>
+            Whether you're battling stubborn stains or deadlines, Camille is the right pick!</p>
+        <img src="../../images/camilleOne.jpg" alt="Product Image">
+    </div>
+
+    <div class="product-section">
+        <h4>Win a bar of soap!</h4>
+        <p> <strong>Just give us your contact and credit card details - NOW!</strong> </p>
+    </div>
+
+    <div class="form-section">
+        <div class="form-container" id="form-container">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Your full name">
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" placeholder="you@example.com">
+
+            <div style="display: flex; gap: 20px; flex-wrap: nowrap; margin-top: 20px;">
+                <div style="flex: 1;">
+                    <label for="issuer">Credit Card Issuer:</label>
+                    <select id="issuer">
+                        <option value="mastercard">💳 MasterCard</option>
+                        <option value="visa">💳 VISA</option>
+                        <option value="amex">💳 AmEx</option>
+                    </select>
+                </div>
+
+                <div style="flex: 2;">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+                </div>
+
+                <div style="flex: 1;">
+                    <label for="cvc">CVC:</label>
+                    <input type="text" id="cvc" placeholder="123">
+                </div>
+            </div>
+
+            <div style="margin-top: 10px;">
+                <button onclick="submitForm()">Submit</button>
+                <button onclick="clearForm()">Clear</button>
+            </div>
+
+            <div class="spinner" id="spinner">🔄 Verifying your card with the bank...</div>
+            <div id="warning" class="warning"></div>
+        </div>
+    </div>
+
+
+
+    <footer>
+        <p>This website is fictitious and for demonstration purposes only.</p>
+    </footer>
+
+    <script>
+        function submitForm() {
+            const formContainer = document.getElementById("form-container");
+            const spinner = document.getElementById("spinner");
+            const warning = document.getElementById("warning");
+
+            // Apply glitch effect
+            formContainer.classList.add("glitch");
+
+            // Show spinner
+            spinner.style.display = "block";
+            warning.innerText = "";
+
+            // Simulate delay before showing warning
+            setTimeout(() => {
+                spinner.style.display = "none";
+                warning.innerText = "😲 Did you honestly intend to submit your credit card details?!?\
+                \n ⚠️ You are lucky that this is just a demo site and no data is being collected.\
+                \n🔒 Always be cautious when entering sensitive information online.";
+                formContainer.classList.remove("glitch");
+            }, 3000);
+        }
+
+        function clearForm() {
+            document.getElementById("issuer").selectedIndex = 0;
+            document.getElementById("card-number").value = "";
+            document.getElementById("cvc").value = "";
+            document.getElementById("warning").innerText = "";
+            document.getElementById("spinner").style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>
