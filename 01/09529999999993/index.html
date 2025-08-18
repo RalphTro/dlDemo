@@ -2,57 +2,159 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Camille Standard One</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+
+
     <style>
+        :root {
+            --space-1: 0.5rem;
+            --space-2: 1rem;
+            --space-3: 1.5rem;
+            --space-4: 2rem;
+            --maxw-text: 65ch;
+            --surface: #f0f0f0;
+            --accent: #2c7be5;
+            --danger: #b00020;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
         body {
             margin: 0;
             padding: 0;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: var(--bg, #fff);
         }
 
         header,
         footer {
-            background-color: #f0f0f0;
-            padding: 20px;
+            background-color: var(--surface);
+            padding: var(--space-3) var(--space-2);
             text-align: center;
         }
 
-        .product-section {
-            padding: 20px;
-            text-align: center;
+        main {
+            display: block;
         }
 
-        .form-section {
-            padding: 20px;
+        .container {
+            padding-left: var(--space-2);
+            padding-right: var(--space-2);
+        }
+
+        .section {
+            padding: var(--space-3) 0;
+        }
+
+        .lead {
+            max-width: var(--maxw-text);
+            margin: 0 auto var(--space-2);
+        }
+
+        .product-media {
             display: flex;
             justify-content: center;
+            margin-top: var(--space-2);
         }
 
-        .form-container {
-            max-width: 700px;
+        .product-media img {
             width: 100%;
+            max-width: 420px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .form-shell {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            display: inline-block;
+        }
+
+        input,
+        select,
+        button {
+            min-height: 44px;
+            font-size: 1rem;
+        }
+
+        .help-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.25rem;
+            display: block;
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-1);
+            margin-top: var(--space-2);
+        }
+
+        .button-primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .button-outline {
+            background: transparent;
+            border: 1px solid #bbb;
+            color: #333;
+        }
+
+        .card-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-2);
+            margin-top: var(--space-2);
+        }
+
+        @media (min-width: 640px) {
+            .card-row {
+                grid-template-columns: 1fr 2fr 1fr;
+            }
+
+            .actions {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         .warning {
-            color: red;
+            color: var(--danger);
             white-space: pre-line;
-            margin-top: 20px;
+            margin-top: var(--space-2);
+            font-weight: 600;
         }
 
         .spinner {
             display: none;
-            margin-top: 10px;
+            margin-top: var(--space-1);
             text-align: center;
+            color: #555;
         }
 
         .glitch {
             animation: glitch 0.3s linear 2;
-        }
-
-        .product-section img {
-            max-width: 40%;
-            height: auto;
         }
 
         @keyframes glitch {
@@ -61,119 +163,189 @@
             }
 
             25% {
-                transform: translate(-5px, 5px);
+                transform: translate(-3px, 3px);
             }
 
             50% {
-                transform: translate(5px, -5px);
+                transform: translate(3px, -3px);
             }
 
             75% {
-                transform: translate(-5px, -5px);
+                transform: translate(-3px, -3px);
             }
 
             100% {
                 transform: translate(0);
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            .glitch {
+                animation: none;
+            }
+
+            * {
+                scroll-behavior: auto !important;
+            }
+        }
+
+        :focus-visible {
+            outline: 3px solid rgba(44, 123, 229, 0.5);
+            outline-offset: 2px;
+        }
+
+        /* Footer info styling */
+        .footer-info {
+            font-size: 0.85rem;
+            margin-top: var(--space-2);
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        @media (min-width: 640px) {
+            .footer-info {
+                flex-direction: row;
+                justify-content: center;
+                gap: var(--space-4);
+            }
+        }
+
+        .footer-info p {
+            margin: 0;
+        }
+
+        .footer-info strong {
+            margin-right: 0.25rem;
+        }
     </style>
 </head>
 
 <body>
-
-    <header>
-        <h2>Camille Standard One</h2>
+    <header role="banner">
+        <div class="container">
+            <h2>Camille Standard One</h2>
+        </div>
     </header>
 
-    <div class="product-section">
-        <h4>Product Description</h4>
-        <p>This luxurious hand soap brings joy to your daily routine. <br>
-            Whether you're battling stubborn stains or deadlines, Camille is the right pick!</p>
-        <img src="../../images/camilleOne.jpg" alt="Product Image">
-    </div>
-
-    <div class="product-section">
-        <h4>Win a bar of soap!</h4>
-        <p> <strong>Just give us your contact and credit card details - NOW!</strong> </p>
-    </div>
-
-    <div class="form-section">
-        <div class="form-container" id="form-container">
-            <label for="name">Name:</label>
-            <input type="text" id="name" placeholder="Your full name">
-
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" placeholder="you@example.com">
-
-            <div style="display: flex; gap: 20px; flex-wrap: nowrap; margin-top: 20px;">
-                <div style="flex: 1;">
-                    <label for="issuer">Credit Card Issuer:</label>
-                    <select id="issuer">
-                        <option value="mastercard">💳 MasterCard</option>
-                        <option value="visa">💳 VISA</option>
-                        <option value="amex">💳 AmEx</option>
-                    </select>
-                </div>
-
-                <div style="flex: 2;">
-                    <label for="card-number">Card Number:</label>
-                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
-                </div>
-
-                <div style="flex: 1;">
-                    <label for="cvc">CVC:</label>
-                    <input type="text" id="cvc" placeholder="123">
-                </div>
+    <main id="main" class="container" role="main">
+        <section class="section product-section" aria-labelledby="prod-heading">
+            <h4 id="prod-heading">Product Description</h4>
+            <p class="lead">
+                This hand soap brings joy to your daily routine.
+                Whether you're battling stubborn stains or deadlines, Camille is the right pick!
+            </p>
+            <div class="product-media">
+                <img src="../../images/camilleOne.jpg" alt="Camille Standard One hand soap" loading="lazy"
+                    decoding="async" />
             </div>
+        </section>
 
-            <div style="margin-top: 10px;">
-                <button onclick="submitForm()">Submit</button>
-                <button onclick="clearForm()">Clear</button>
+        <section class="section product-section" aria-labelledby="promo-heading">
+            <h4 id="promo-heading">Win a bar of soap!</h4>
+            <p><strong>Just give us your contact and credit card details. NOW!</strong></p>
+        </section>
+
+        <section class="section" aria-labelledby="form-heading">
+            <div class="form-shell">
+                <form id="demo-form" novalidate aria-describedby="form-disclaimer">
+                    <label for="name">Name</label>
+                    <input class="u-full-width" type="text" id="name" name="name" placeholder="Your full name"
+                        autocomplete="name" enterkeyhint="next" />
+
+                    <label for="email">Email Address</label>
+                    <input class="u-full-width" type="email" id="email" name="email" placeholder="you@example.com"
+                        autocomplete="email" inputmode="email" enterkeyhint="next" />
+
+                    <div class="card-row" role="group" aria-label="Credit card (demo)">
+                        <div>
+                            <label for="issuer">Credit Card Issuer</label>
+                            <select id="issuer" name="issuer" class="u-full-width" autocomplete="cc-type">
+                                <option value="mastercard">💳 MasterCard</option>
+                                <option value="visa">💳 VISA</option>
+                                <option value="amex">💳 AmEx</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="card-number">Card Number</label>
+                            <input class="u-full-width" type="text" id="card-number" name="card-number"
+                                placeholder="1234 5678 9012 3456" inputmode="numeric" autocomplete="cc-number"
+                                pattern="[0-9 ]{12,23}" aria-describedby="ccHelp" enterkeyhint="next" />
+                        </div>
+                        <div>
+                            <label for="cvc">CVC</label>
+                            <input class="u-full-width" type="text" id="cvc" name="cvc" placeholder="123"
+                                inputmode="numeric" autocomplete="cc-csc" pattern="[0-9]{3,4}" enterkeyhint="done" />
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button type="submit" class="button button-primary">Submit</button>
+                        <button type="reset" class="button button-outline">Clear</button>
+                    </div>
+
+                    <div class="spinner" id="spinner" role="status" aria-live="polite" aria-atomic="true">
+                        🔄 Transmitting your precious data to MalWorx Unlimited...
+                    </div>
+
+                    <div id="warning" class="warning" role="alert" aria-live="assertive" aria-atomic="true"></div>
+                </form>
+
+                <noscript>
+                    <p class="warning">
+                        JavaScript is disabled. This demo form only shows a warning and never sends data.
+                        Enable JavaScript to see the full demo interaction.
+                    </p>
+                </noscript>
             </div>
+        </section>
+    </main>
 
-            <div class="spinner" id="spinner">🔄 Verifying your card with the bank...</div>
-            <div id="warning" class="warning"></div>
+    <footer role="contentinfo">
+        <div class="container">
+            <p>This website is fictitious and for demonstration purposes only.</p>
+            <div class="footer-info">
+                <p><strong>&copy;</strong> RalphTro |&nbsp; <strong>&#128197;</strong> 2025</p>
+                <p><strong>@</strong> <a href="mailto:ralph.muster@info.de">ralph.troeger@gs1.de</a></p>
+            </div>
         </div>
-    </div>
-
-
-
-    <footer>
-        <p>This website is fictitious and for demonstration purposes only.</p>
     </footer>
 
-    <script>
-        function submitForm() {
-            const formContainer = document.getElementById("form-container");
+    <script defer>
+        (function () {
+            const form = document.getElementById("demo-form");
             const spinner = document.getElementById("spinner");
             const warning = document.getElementById("warning");
 
-            // Apply glitch effect
-            formContainer.classList.add("glitch");
-
-            // Show spinner
-            spinner.style.display = "block";
-            warning.innerText = "";
-
-            // Simulate delay before showing warning
-            setTimeout(() => {
+            function clearForm() {
+                warning.textContent = "";
                 spinner.style.display = "none";
-                warning.innerText = "😲 Did you honestly intend to submit your credit card details?!?\
-                \n ⚠️ You are lucky that this is just a demo site and no data is being collected.\
-                \n🔒 Always be cautious when entering sensitive information online.";
-                formContainer.classList.remove("glitch");
-            }, 3000);
-        }
+                form.classList.remove("glitch");
+                form.setAttribute("aria-busy", "false");
+            }
 
-        function clearForm() {
-            document.getElementById("issuer").selectedIndex = 0;
-            document.getElementById("card-number").value = "";
-            document.getElementById("cvc").value = "";
-            document.getElementById("warning").innerText = "";
-            document.getElementById("spinner").style.display = "none";
-        }
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                form.classList.add("glitch");
+                spinner.style.display = "block";
+                spinner.textContent = "🔄 Verifying your card with the bank...";
+                warning.textContent = "";
+                form.setAttribute("aria-busy", "true");
+
+                setTimeout(() => {
+                    spinner.style.display = "none";
+                    warning.textContent =
+                        "😲 Did you honestly intend to submit your credit card details?!?\n" +
+                        "⚠️ You are lucky that this is just a demo site and no data is being collected.\n" +
+                        "🔒 Always be cautious when entering sensitive information online.";
+                    form.classList.remove("glitch");
+                    form.setAttribute("aria-busy", "false");
+                }, 1200);
+            });
+
+            form.addEventListener("reset", clearForm);
+        })();
     </script>
-
 </body>
 
 </html>
